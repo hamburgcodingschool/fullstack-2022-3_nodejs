@@ -1,0 +1,28 @@
+body {
+    background-color: beige;
+}
+
+#mainWrapper {
+    width: 1000px;
+    min-height: 600px;
+    background-color: white;
+    margin: 50px auto 0;
+}
+
+#mainWrapper > header {
+    display: flex;
+}
+
+#mainWrapper > header > div:first-child {
+    width: 100px;
+    height: 100px;
+    background-color: pink;
+}
+
+#mainWrapper nav {
+    width: 100%;
+    background-color: aquamarine;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

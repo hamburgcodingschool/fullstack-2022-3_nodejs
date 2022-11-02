@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="mainWrapper">
+        <%- include("partials/header.ejs") %>
+        <ul>
+        <% for(let i = 0; i < people.length; i++) { %>
+    
+            <li><a href="/detail?index=<%= i %>"><%= people[i].name %></a></li>
+    
+        <% } %>
+        </ul>
+    </div>
+    <script>
+        for (let i = 0; i < 10; i++) {
+            document.write(i);
+        }        
+    </script>
+</body>
+</html>

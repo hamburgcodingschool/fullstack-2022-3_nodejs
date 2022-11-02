@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="mainWrapper">
+        <%- include("partials/header.ejs") %>
+        <h1>detail</h1>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>City</th>
+            </tr>
+            <tr>
+                <td><%= person.name %></td>
+                <td><%= person.city %></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

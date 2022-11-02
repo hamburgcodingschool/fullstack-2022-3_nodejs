@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Joe",
+        "city": "Barcelona"
+    },
+    {
+        "name": "Bob",
+        "city": "Berlin"
+    },
+    {
+        "name": "Martha",
+        "city": "London"
+    },
+    {
+        "name": "Jane",
+        "city": "Porto"
+    },
+    {
+        "name": "Chris",
+        "city": "Paris"
+    },
+    {
+        "name": "Roberta",
+        "city": "Vienna"
+    }
+]
