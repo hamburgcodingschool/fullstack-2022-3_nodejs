@@ -13,7 +13,10 @@ const connection = mysql.createConnection({
     database: "classicmodels"
 });
 
-const queryString = "SELECT * FROM productlines";
+const queryString = `SELECT *
+                    FROM employees
+                    LEFT JOIN offices ON offices.officeCode = employees.officeCode
+                    LIMIT 1`;
 
 connection.query(queryString, function(err, results, fields) {
     if (err) {
@@ -21,9 +24,11 @@ connection.query(queryString, function(err, results, fields) {
         return;
     }
 
-    for (let i = 0; i < results.length; i++) {
-        console.log(results[i].productline);
-    }
+    console.log(results);
 
-    console.log(fields);
+    // for (let i = 0; i < results.length; i++) {
+    //     console.log(results[i].productline);
+    // }
+
+    // console.log(fields);
 });
