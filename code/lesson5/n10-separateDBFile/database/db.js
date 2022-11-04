@@ -16,6 +16,29 @@ function getStudents(callback) {
     });
 }
 
+function getCourses(callback) {
+    const sqlQuery = "SELECT * FROM courses";
+
+    connection.query(sqlQuery, function(err, results) {
+        callback(results);
+    });
+}
+
+function getStudentById(id, callback) {
+    // THIS IS SUPER DANGEROUS AND FOR TODAY ONLY
+    // IF I EVER SEE YOU DOING THIS AGAIN... UUFf...
+    const sqlQuery = "SELECT * FROM students WHERE id = " + id;
+
+    connection.query(sqlQuery, function(err, results) {
+        // SINCE WE ARE MATCHING BY ID
+        // WE KNOW THAT ONLY ONE RESULT CAN BE GIVEN
+        // SINCE PRIMARY KEYS ARE UNIQUE
+        callback(results[0]);
+    });
+}
+
 module.exports = {
-    getStudents
+    getStudents,
+    getCourses,
+    getStudentById
 };

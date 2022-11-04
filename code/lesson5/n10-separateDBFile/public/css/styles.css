@@ -1,3 +1,14 @@
 body {
     background-color: aqua;
 }
+
+.studentsTable {
+    border: solid 1px black;
+    border-collapse: collapse;
+    width: 400px;
+}
+
+.studentsTable th, .studentsTable td {
+    border: solid 1px black;
+    padding: 5px;
+} 

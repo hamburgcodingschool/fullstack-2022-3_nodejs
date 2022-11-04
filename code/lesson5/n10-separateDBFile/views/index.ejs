@@ -8,13 +8,24 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>Hello there</h1>
-    <ul>
-        <% for (let i = 0; i < students.length; i++) { %>
-            
-            <li>Hi <%= students[i].name %> what a nice email: <%= students[i].email %> </li> 
-
+    <h1>Welcome to our school</h1>
+    <h2>students</h2>
+    
+    <table class="studentsTable">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+        <% for( let i = 0; i < students.length; i++ ) { %>
+            <tr>
+                <td><%= students[i].id %></td>
+                <td><a href="student?id=<%= students[i].id %>"><%= students[i].name %></a></td>
+                <td><a href="mailto:<%= students[i].email %>"><%= students[i].email %></a></td>
+            </tr>
         <% } %>
-    </ul>
+    </table>
+
+
 </body>
 </html>

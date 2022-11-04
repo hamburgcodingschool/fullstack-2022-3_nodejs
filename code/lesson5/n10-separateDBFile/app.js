@@ -16,7 +16,28 @@ app.get("/", function(req, res) {
         }
         res.render("index", templateData);
     });
+});
 
+app.get("/courses", function(req, res) {
+
+    db.getCourses(function(results) {
+        const templateData = {
+            courses: results
+        }
+        res.render("courses", templateData);
+    });
+});
+
+app.get("/student", function(req, res) {
+
+    const id = req.query.id;
+
+    db.getStudentById(id, function(results) {
+        const templateData = {
+            student: results
+        }
+        res.render("student", templateData);
+    });
 });
 
 app.listen(port, function() {
