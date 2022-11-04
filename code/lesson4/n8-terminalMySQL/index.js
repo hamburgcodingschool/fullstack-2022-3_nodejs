@@ -16,6 +16,7 @@ const connection = mysql.createConnection({
 const queryString = `SELECT *
                     FROM employees
                     LEFT JOIN offices ON offices.officeCode = employees.officeCode
+                    ORDER BY firstName
                     LIMIT 1`;
 
 connection.query(queryString, function(err, results, fields) {
@@ -24,11 +25,9 @@ connection.query(queryString, function(err, results, fields) {
         return;
     }
 
-    console.log(results);
+    // console.log(results);
 
-    // for (let i = 0; i < results.length; i++) {
-    //     console.log(results[i].productline);
-    // }
-
-    // console.log(fields);
+    for (let i = 0; i < results.length; i++) {
+        console.log(results[i]);
+    }
 });
