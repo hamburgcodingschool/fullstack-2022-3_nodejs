@@ -1,9 +1,12 @@
 const express = require("express");
+const cors = require("cors");
 const db = require("./databases/db");
 
 const app = express();
 
 const port = 3000;
+
+app.use(cors());
 
 app.get("/", function(req, res) {
     res.send("REST API data is in another endpoint...");

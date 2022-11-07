@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello</h1>
+    <button id="getButton">Get Students</button>
+    <ul id="studentList"></ul>
+
+    <script>
+        const studentList = document.querySelector("#studentList");
+        const getButton = document.querySelector("#getButton");
+
+        getButton.addEventListener("click", function() {
+            fillStudentList();
+        });
+
+
+        // function fillStudentList() {
+
+        //     fetch("http://localhost:3000/students").then(function(response) {
+
+        //         return response.json();
+
+        //     }).then(function(result) {
+
+        //         console.log(result);
+        //         studentList.innerHTML = "";
+        //         for (let i = 0; i < result.results.length; i++) {
+        //             studentList.innerHTML += `<li>${result.results[i].name}</li>`;
+        //         }
+
+        //     }).catch(function(error) {
+
+        //         alert("THERE WAS AN ERROR!!!!");
+        //         console.log(error);
+                
+        //     });
+        // }
+
+        async function fillStudentList() {
+            const response = await fetch("http://localhost:3000/students");
+            const result = await response.json();
+            console.log(result);
+            studentList.innerHTML = "";
+            for (let i = 0; i < result.results.length; i++) {
+                studentList.innerHTML += `<li>${result.results[i].name}</li>`;
+            }
+        }
+        
+    </script>
+</body>
+</html>

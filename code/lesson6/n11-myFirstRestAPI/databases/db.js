@@ -9,9 +9,14 @@ const connection = mysql.createConnection({
 });
 
 function getAllStudents(callback) {
-    const queryString = "SELECT * FROM students";
+    const queryString = "SELECT name, CONCAT('http://localhost:3000/students/', id) AS url FROM students";
     connection.query(queryString, function(err, results) {
-        callback(results);
+        callback({
+            count: results.length,
+            next: "not yet",
+            previous: "not yet",
+            results: results
+        });
     });
 }
 
@@ -24,7 +29,16 @@ function getFirstStudent(callback) {
 }
 
 function getStudentById(id, callback) {
-    const queryString = "SELECT * FROM students WHERE id = ?";
+    const queryString = `SELECT 
+	                        id,
+	                        name,
+	                        origin,
+	                        birthday,
+	                        address,
+	                        email,
+                            CONCAT("http://localhost:3000/courses/", course_id) AS course
+                        FROM students
+                        WHERE id = ?`;
     const params = [id];
 
     connection.query(queryString, params, function(err, results) {
