@@ -1,9 +1,31 @@
+const studentsDB = require("../databases/students");
+
 function students(req, res) {
-    res.send("All Students");
+    studentsDB.getAllStudents(function(results) {
+        res.json(results);
+    });
 }
 
 function studentById(req, res) {
-    res.send("1 Guy... Maybe Ringo.. Maybe some other rando!!!");
+    const paramId = Number(req.params.id);
+    if (!paramId) {
+        res.status(404).json({
+            status: "Error",
+            description: "Invalid URL"
+        });
+        return;
+    }
+
+    studentsDB.getStudentById(paramId, function(result) {
+        if (result) {
+            res.json(result);
+        } else {
+            res.status(404).json({
+                status: "Error",
+                description: "Student not found"
+            });
+        }
+    });
 }
 
 module.exports = {
