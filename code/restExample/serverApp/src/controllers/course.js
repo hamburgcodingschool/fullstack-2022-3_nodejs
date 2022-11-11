@@ -34,6 +34,21 @@ function courseById(req, res) {
     });
 }
 
+function addCourse(req, res) {
+
+    // We should probably do sanitize this date first
+    const newCourse = {
+        name: req.body.name,
+        shortDescription: req.body.shortDescription,
+        description: req.body.description
+    };
+
+    coursesDB.insertIntoCourses(newCourse, function(result) {
+        const id = result.insertId;
+        res.send(`Added to database with id: ${id}`);
+    });
+}
+
 // function courseById(req, res) {
 //     const paramId = Number(req.params.id);
 //     if (!paramId) {
@@ -78,5 +93,6 @@ function courseById(req, res) {
 
 module.exports = {
     courses,
-    courseById
+    courseById,
+    addCourse
 }

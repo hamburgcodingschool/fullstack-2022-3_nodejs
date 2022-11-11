@@ -35,9 +35,25 @@ function getCoursesByIdWithStudents(courseId, callback) {
     });
 }
 
+function insertIntoCourses(courseData, callback) {
+    const queryString = `INSERT INTO courses VALUES(NULL, ?, ?, ?)`;
+    const params = [
+        courseData.name, 
+        courseData.shortDescription,
+        courseData.description
+    ];
+
+    connection.query(queryString, params, function(err, result) {
+        // console.log(err);
+        console.log(result);
+        callback(result);
+    });
+}
+
 
 module.exports = {
     getAllCourses,
     getCourseById,
-    getCoursesByIdWithStudents
+    getCoursesByIdWithStudents,
+    insertIntoCourses
 }
